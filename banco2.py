@@ -38,7 +38,7 @@ class Cliente:
         return True
     
     def __str__(self):
-        return "Cliente: {} - Saldo: {}".format(self.nombre, self.banco.saldo)
+        return "Cliente: {} - Saldo inicial: {}".format(self.nombre, self.banco.saldo)
     
     
 def simulacion(cliente):
@@ -79,7 +79,7 @@ def main():
     pool.close()    #cierra los procesos
     pool.join()    #espera a que terminen los procesos
     
-    print(banco)
+    print("El saldo final es:",banco)
     
 if __name__ == "__main__":
     main()
