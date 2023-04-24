@@ -39,3 +39,5 @@ if saldo == 100:
     print("El saldo final es correcto: 100 euros.")
 else:
     print(f"El saldo final es incorrecto: {saldo} euros.")
+    
+#este funciona, falta meterlo en clases y lanzador
