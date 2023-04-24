@@ -42,24 +42,42 @@ class Cliente:
     
     
 def simulacion(cliente):
-    for i in range(100):
-        if random.randint(0,1) == 0:
-            cliente.retirar(random.randint(1,10))
-        else:
-            cliente.depositar(random.randint(1,10))
-        time.sleep(0.01)
+    #40 procesos para ingresar 100
+    for i in range(40):
+        cliente.depositar(100)
+        
+    #40 procesos para retirar 100
+    for i in range(40):
+        cliente.retirar(100)
+        
+    #20 procesos para ingresar 50
+    for i in range(20):
+        cliente.depositar(50)
+        
+    #20 procesos para retirar 50
+    for i in range(20):
+        cliente.retirar(50)
+        
+    #60 procesos para ingresar 20
+    for i in range(60):
+        cliente.depositar(20)
+    
+    #60 procesos para retirar 20
+    for i in range(60):
+        cliente.retirar(20)
+        
     print(cliente)
     
 def main():
     banco = Banco(100) #saldo inicial   
     clientes = [] #lista de clientes
-    for i in range(5): 
+    for i in range(1):  #crea 1 cliente
         clientes.append(Cliente("\nCliente {}".format(i), banco))
     
-    pool = Pool(processes=4)
-    pool.map(simulacion, clientes)
-    pool.close()
-    pool.join()
+    pool = Pool(processes=4) #crea 4 procesos
+    pool.map(simulacion, clientes)  #ejecuta la funcion simulacion en los 4 procesos
+    pool.close()    #cierra los procesos
+    pool.join()    #espera a que terminen los procesos
     
     print(banco)
     
