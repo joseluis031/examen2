@@ -39,3 +39,20 @@ class Banca:
         
     def incrementa_saldo(self, cantidad):
         self.saldo += cantidad
+
+def main():
+    jugadores_numero = [Jugador(1000) for i in range(4)]
+
+    banca = Banca(50000)
+
+    numero_a_jugar = 5
+
+    for jugador in jugadores_numero:
+    jugador.apuesta_numero(numero_a_jugar)
+    banca.acepta_apuesta(10)
+
+    if jugador.saldo > 0:
+        ganancias = banca.paga_ganancias(360)
+        jugador.incrementa_saldo(ganancias)
+    else:
+        banca.incrementa_saldo(10)
