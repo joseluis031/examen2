@@ -74,12 +74,10 @@ def main():
     for i in range(1):  #crea 1 cliente
         clientes.append(Cliente("\nCliente {}".format(i), banco))
     
-    pool = Pool(processes=4) #crea 4 procesos
-    pool.map(simulacion, clientes)  #ejecuta la funcion simulacion en los 4 procesos
+    pool = Pool(processes=6) #crea 6 procesos
+    pool.map(simulacion, clientes)  #ejecuta la funcion simulacion en los 6 procesos
     pool.close()    #cierra los procesos
     pool.join()    #espera a que terminen los procesos
     
     print("El saldo final es:",banco)
     
-if __name__ == "__main__":
-    main()
