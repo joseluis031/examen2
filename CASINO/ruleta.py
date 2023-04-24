@@ -22,3 +22,20 @@ class Jugador:
                 self.saldo += apuesta * 36
                 break
             apuesta *= 2
+
+
+class Banca:
+    def __init__(self, saldo_inicial):
+        self.saldo = saldo_inicial
+        
+    def acepta_apuesta(self, cantidad):
+        self.saldo += cantidad
+        
+    def paga_ganancias(self, cantidad):
+        if cantidad > self.saldo:
+            cantidad = self.saldo
+        self.saldo -= cantidad
+        return cantidad
+        
+    def incrementa_saldo(self, cantidad):
+        self.saldo += cantidad
