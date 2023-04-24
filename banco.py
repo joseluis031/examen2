@@ -19,4 +19,28 @@ class Banco:
     def __str__(self):
         return "Saldo: {}".format(self.saldo)
     
+
+class Cliente:
+    def __init__(self, nombre, banco):
+        self.nombre = nombre
+        self.banco = banco
+        
+    def retirar(self, monto):
+        if self.banco.saldo >= monto:
+            self.banco.movimiento(-monto)
+            return True
+        else:
+            return False
+        
+    def depositar(self, monto):
+        self.banco.movimiento(monto)
+        return True
+    
+    def __str__(self):
+        return "Cliente: {} - Saldo: {}".format(self.nombre, self.banco.saldo)
+    
+    
+def main():
+    
+    
     
